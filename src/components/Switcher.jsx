@@ -1,42 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 const Switcher = () => {
-  const handleTheme = () => {
-    // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle("hidden");
-    themeToggleLightIcon.classList.toggle("hidden");
-
-    // if set via local storage previously
-    if (localStorage.getItem("color-theme")) {
-      if (localStorage.getItem("color-theme") === "light") {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("color-theme", "light");
-      }
-
-      // if NOT set via local storage previously
-    } else {
-      if (document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("color-theme", "light");
-      } else {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
-      }
-    }
-  };
+  const [dark, setDark] = useState(false);
+  dark
+    ? document.documentElement.classList.add("dark")
+    : document.documentElement.classList.remove("dark");
   return (
     <button
       id="theme-toggle"
       type="button"
-      onClick={handleTheme}
-      class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+      onClick={() => setDark(!dark)}
+      className="text-gray-500 dark:text-gray-600 absolute 
+      top-1 right-2 bg-gray-600 dark:bg-gray-200 
+      focus:outline-none focus:ring-2 focus:ring-gray-200 
+      dark:focus:ring-gray-700 rounded-full text-sm p-2"
     >
-      <FaMoon id="theme-toggle-dark-icon" className="w-5 h-5 hidden" />
-      <FaSun id="theme-toggle-dark-icon" className="w-5 h-5 hidden" />
+      {dark ? (
+        <FaSun id="theme-toggle-dark-icon" className="w-3 h-3 text-gray-700" />
+      ) : (
+        <FaMoon id="theme-toggle-dark-icon" className="w-3 h-3 text-white" />
+      )}
     </button>
   );
 };

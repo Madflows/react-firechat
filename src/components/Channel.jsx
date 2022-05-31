@@ -7,7 +7,7 @@ import {
   query,
   orderBy,
   addDoc,
-  serverTimestamp
+  serverTimestamp,
 } from "firebase/firestore";
 import Message from "./Message";
 
@@ -32,9 +32,12 @@ const Channel = ({ user = null, db = null, msgRef = null }) => {
           setMessages(data);
         }
       );
+      
 
       return unsubMsg;
     }
+    // Scroll the last message into view :)
+    bottomListRef.current.scrollIntoView({ behavior: "smooth" });
   }, [db]);
 
   const handleOnChange = (e) => {
@@ -50,11 +53,11 @@ const Channel = ({ user = null, db = null, msgRef = null }) => {
         createdAt: serverTimestamp(),
         uid,
         displayName,
-        photoURL
+        photoURL,
       }).then(() => {
-        setNewMessage("")
-        bottomListRef.current.scrollIntoView({ behavior: 'smooth' });
-      })
+        setNewMessage("");
+        bottomListRef.current.scrollIntoView({ behavior: "smooth" });
+      });
     }
   };
 
@@ -71,14 +74,17 @@ const Channel = ({ user = null, db = null, msgRef = null }) => {
               This is the beginning of this chat.
             </p>
           </div>
-          <ul className="h-[50vh] overflow-auto">
-            {messages.map(message => (
+
+          <div className="h-[50vh] overflow-x-clip overflow-y-scroll">
+            <ul>
+              {messages.map((message) => (
                 <li key={message.id}>
                   <Message {...message} />
                 </li>
               ))}
-          </ul>
-          <div ref={bottomListRef} />
+            </ul>
+            <div ref={bottomListRef} />
+          </div>
         </div>
       </div>
 

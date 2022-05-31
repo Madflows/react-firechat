@@ -14,7 +14,7 @@ import { getFirestore, collection } from "firebase/firestore";
 import Button from "./components/Button";
 import Channel from "./components/Channel";
 import Loader from "./components/Loader";
-// import Switcher from "./components/Switcher";
+import Switcher from "./components/Switcher";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjBTpDeYqqLfSyeJLO2wdEPOJKiLnRkpg",
@@ -79,8 +79,8 @@ function App() {
   };
 
   return (
-    <div>
-      {/* <Switcher /> */}
+    <div className="dark:bg-slate-700 transition-all dark:text-slate-200">
+      <Switcher />
       {user ? (
         <>
           <Button
