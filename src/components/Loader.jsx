@@ -28,7 +28,7 @@ const Loader = ({ variant = "primary", size = "default" }) => {
 };
 
 Loader.propTypes = {
-  variant: PropTypes.oneOf(["primary", "secondary", "white"]),
+  variant: PropTypes.oneOf(["primary", "secondary", "white", "slate"]),
   size: PropTypes.oneOf(["sm", "default", "lg"]),
 };
 
