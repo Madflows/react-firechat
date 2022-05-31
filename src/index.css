@@ -1,14 +1,35 @@
-@import url('https://fonts.cdnfonts.com/css/sofia-pro');
-@import url('https://fonts.cdnfonts.com/css/cubano');
+@import url("https://fonts.cdnfonts.com/css/sofia-pro");
+@import url("https://fonts.cdnfonts.com/css/cubano");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: 'Sofia Pro', sans-serif;
+* {
+  font-family: "Sofia Pro", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: 'Cubano', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cubano", sans-serif;
+}
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar-track {
+  border: 1px solid black;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }

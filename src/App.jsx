@@ -65,7 +65,7 @@ function App() {
   if (initializing)
     return (
       <div className="flex items-center justify-center h-screen">
-        <Loader size="lg" />
+        <Loader size="lg" variant="slate" />
       </div>
     );
 

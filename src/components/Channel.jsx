@@ -59,19 +59,19 @@ const Channel = ({ user = null, db = null, msgRef = null }) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col max-h-full">
       <div className="overflow-auto h-full">
         <div className="py-4 max-w-screen-lg mx-auto">
           <div className="border-b dark:border-gray-600 border-gray-200 py-8 mb-4">
             <div className="font-bold text-3xl text-center">
               <p className="mb-1">Welcome to</p>
-              <p className="mb-3">React FireChat</p>
+              <h2 className="mb-3">Flows FireChat</h2>
             </div>
             <p className="text-gray-400 text-center">
               This is the beginning of this chat.
             </p>
           </div>
-          <ul>
+          <ul className="h-[50vh] overflow-auto">
             {messages.map(message => (
                 <li key={message.id}>
                   <Message {...message} />
