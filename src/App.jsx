@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { FaPowerOff } from "react-icons/fa"
+import { FaPowerOff } from "react-icons/fa";
+
 
 import {
   getAuth,
@@ -15,6 +16,7 @@ import Button from "./components/Button";
 import Channel from "./components/Channel";
 import Loader from "./components/Loader";
 import Switcher from "./components/Switcher";
+import Footer from "./components/Footer"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjBTpDeYqqLfSyeJLO2wdEPOJKiLnRkpg",
@@ -64,7 +66,7 @@ function App() {
 
   if (initializing)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center dark:bg-slate-900 h-screen">
         <Loader size="lg" variant="slate" />
       </div>
     );
@@ -97,7 +99,9 @@ function App() {
       ) : (
         <>
           <div className="flex items-center justify-center shadow-md h-full">
-            <div className="flex flex-col items-center justify-center max-w-xl w-full mx-4 p-3 md:p-8 rounded-md shadow-card min-h-screen bg-white dark:bg-coolDark-600 transition-all">
+            <div className="flex flex-col items-center justify-center 
+            max-w-xl w-full mx-4 p-3 md:p-8 rounded-md 
+            shadow-card min-h-screen bg-white dark:bg-slate-700 transition-all">
               <h2 className="mb-2 text-3xl flex flex-col gap-1 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

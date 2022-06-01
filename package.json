@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.0.3",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "firebase": "^9.8.2",
