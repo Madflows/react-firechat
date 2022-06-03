@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { FaPowerOff } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 
 import {
   getAuth,
   GoogleAuthProvider,
+  GithubAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
 } from "firebase/auth";
@@ -64,6 +66,17 @@ function App() {
     }
   };
 
+  const signInWithGithub = async () => {
+    const provider = new GithubAuthProvider();
+    auth.useDeviceLanguage();
+
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      console.log(err.message());
+    }
+  }
+
   if (initializing)
     return (
       <div className="flex items-center justify-center dark:bg-slate-900 h-screen">
@@ -120,6 +133,7 @@ function App() {
               <p className="mb-8 text-lg text-center">
                 The easiest way to chat with people all around the world.
               </p>
+              <div className="flex gap-2 flex-col md:flex-row">
               <button
                 onClick={signInWithGoogle}
                 className="rounded shadow-md pl-6 pr-8 py-3 bg-gray-100 hover:bg-slate-200 text-gray-600 font-medium flex items-center justify-center overflow-y-hidden focus:outline-none focus:ring focus:ring-primary-500 focus:ring-opacity-75"
@@ -152,6 +166,16 @@ function App() {
                 </svg>
                 Sign in with Google
               </button>
+              <button
+              onClick={signInWithGithub}
+              className="rounded shadow-md pl-6 pr-8 py-3 bg-gray-100 hover:bg-slate-200 text-gray-600 font-medium flex items-center justify-center overflow-y-hidden focus:outline-none focus:ring focus:ring-primary-500 focus:ring-opacity-75"
+              >
+                <FaGithub 
+                className="w-6 h-6 mr-4 flex-shrink-0"
+                />
+                Sign in with Github
+              </button>
+              </div>
             </div>
           </div>
         </>
